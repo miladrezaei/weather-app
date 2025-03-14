@@ -15,11 +15,19 @@ const renderCurrentWeather = (data) => {
   console.log(data);
   const weatherJSX = `
   <h1>${data.name}, ${data.sys.country}</h1>
-  <div>
-    <img alt="weather icon" src= http://openweathermap.org/img/w/${data.weather[0].icon}.png>
+  <div id="main">
+    <img alt="weather icon" src= http://openweathermap.org/img/w/${
+      data.weather[0].icon
+    }.png>
     <span>${data.weather[0].main}</span>
-    <p>${data.main.temp}</p>
+    <p>${Math.round(data.main.temp)} ℃</p>
   </div>
+  <div id="info">
+    <p>Humidity: <span>${data.main.humidity} %</span></p>
+    <p>Wind Speed: <span>${data.wind.speed} m/s</span></p>
+  
+  </div>  
+  
   `;
   weatherContaner.innerHTML = weatherJSX;
 };
